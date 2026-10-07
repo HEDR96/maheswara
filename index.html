@@ -112,6 +112,22 @@ footer h4{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-si
 footer .ftr p{opacity:.7;font-size:.85rem;margin-top:8px}
 footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
 @media(max-width:640px){footer .ftr{grid-template-columns:1fr}}
+
+.marq{width:100%;overflow:hidden;margin-top:20px;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.track{display:flex;gap:50px;width:max-content;align-items:center;animation:mq 40s linear infinite}
+.track.rev{animation-direction:reverse;gap:22px}
+.track img{height:76px;width:auto;background:#fffff9;border-radius:14px;padding:8px 16px;object-fit:contain;box-shadow:0 8px 24px #0006}
+.track .ph{height:120px;width:120px;border-radius:50%;object-fit:cover;border:2px solid #d9c27a88}
+@keyframes mq{to{transform:translateX(-50%)}}
+.frame{position:relative;display:block;width:100%;max-width:900px;border-radius:22px;overflow:hidden;border:2px solid #d9c27a66;box-shadow:0 40px 80px #000a}
+.frame img{width:100%;display:block}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateZ(60px);width:84px;height:84px;border-radius:50%;background:#999B53e6;display:grid;place-items:center;font-size:1.8rem;color:#fff;box-shadow:0 10px 40px #000a;padding-left:6px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;width:100%;max-width:1000px;margin-top:34px}
+.thumb{display:block;border-radius:16px;overflow:hidden;border:1px solid #d9c27a55;aspect-ratio:1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.lang{display:flex;gap:4px;margin-left:18px}
+.lang button{background:transparent;border:1px solid #d9c27a88;color:var(--cream);padding:6px 11px;border-radius:20px;font:600 .7rem Montserrat;cursor:pointer}
+.lang button.on{background:var(--olive);border-color:var(--olive)}
 </style>
 </head>
 <body>
@@ -128,6 +144,7 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
     <li><a href="#galeri">Galeri</a></li>
     <li><a href="#kontak">Kontak</a></li>
   </ul>
+  <div class="lang"><button class="on" data-l="id">ID</button><button data-l="en">EN</button></div>
 </nav>
 
 <main>
@@ -149,12 +166,11 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
   <a class="btn reveal" href="#kelebihan">Pelajari Lebih Lanjut</a>
 </section>
 
-<section id="partner" style="min-height:auto;padding:60px 6vw">
-  <div class="eyebrow reveal">Dipercaya Sejak 2007</div>
-  <div class="reveal" style="display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap">
-    <img class="bs" style="margin:0" src="img/maheswara-wedding-planner-1-1.png" alt="Bridestory">
-    <p style="max-width:460px;line-height:1.7;opacity:.85">Ratusan calon pengantin telah mempercayakan pernikahan tradisional, nasional dan internasional mereka kepada Maheswara.</p>
-  </div>
+<section id="partner" style="min-height:auto;padding:70px 0">
+  <div class="eyebrow reveal">Partner Terpercaya Kami</div>
+  <div class="marq reveal"><div class="track"><img src="img/partners/p1.png" alt="Hallf"><img src="img/partners/p2.png" alt="Little Collins"><img src="img/partners/p3.png" alt="LittleSmlie"><img src="img/partners/p4.png" alt="Peytions"><img src="img/partners/p5.png" alt="Siempre"><img src="img/partners/p6.png" alt="Sumeria"><img src="img/partners/p7.png" alt="Tribrata"><img src="img/partners/p8.png" alt="Viding"><img src="img/partners/p9.png" alt="Wyls"><img src="img/partners/p10.png" alt="Casakhasa"><img src="img/partners/p11.png" alt="Entertaiment"><img src="img/partners/p12.png" alt="Mercure"><img src="img/partners/p1.png" alt="Hallf"><img src="img/partners/p2.png" alt="Little Collins"><img src="img/partners/p3.png" alt="LittleSmlie"><img src="img/partners/p4.png" alt="Peytions"><img src="img/partners/p5.png" alt="Siempre"><img src="img/partners/p6.png" alt="Sumeria"><img src="img/partners/p7.png" alt="Tribrata"><img src="img/partners/p8.png" alt="Viding"><img src="img/partners/p9.png" alt="Wyls"><img src="img/partners/p10.png" alt="Casakhasa"><img src="img/partners/p11.png" alt="Entertaiment"><img src="img/partners/p12.png" alt="Mercure"></div></div>
+  <div class="eyebrow reveal" style="margin-top:50px">Klien Tercinta Kami</div>
+  <div class="marq reveal"><div class="track rev"><img src="img/clients/c1.png" alt="A&amp;P"><img src="img/clients/c2.png" alt="H&amp;S"><img src="img/clients/c3.png" alt="M&amp;M"><img src="img/clients/c4.png" alt="N&amp;H"><img src="img/clients/c5.png" alt="Nutana"><img src="img/clients/c6.png" alt="Our Client"><img src="img/clients/c7.png" alt="Z&amp;A"><img src="img/clients/c8.png" alt="Listrik Kita Indonesia"><img src="img/clients/c1.png" alt="A&amp;P"><img src="img/clients/c2.png" alt="H&amp;S"><img src="img/clients/c3.png" alt="M&amp;M"><img src="img/clients/c4.png" alt="N&amp;H"><img src="img/clients/c5.png" alt="Nutana"><img src="img/clients/c6.png" alt="Our Client"><img src="img/clients/c7.png" alt="Z&amp;A"><img src="img/clients/c8.png" alt="Listrik Kita Indonesia"><img src="img/clients/c1.png" alt="A&amp;P"><img src="img/clients/c2.png" alt="H&amp;S"><img src="img/clients/c3.png" alt="M&amp;M"><img src="img/clients/c4.png" alt="N&amp;H"><img src="img/clients/c5.png" alt="Nutana"><img src="img/clients/c6.png" alt="Our Client"><img src="img/clients/c7.png" alt="Z&amp;A"><img src="img/clients/c8.png" alt="Listrik Kita Indonesia"></div></div>
 </section>
 
 <section id="masalah">
@@ -249,6 +265,15 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
   </div>
 </section>
 
+<section id="inspirasi" style="min-height:auto">
+  <div class="eyebrow reveal">Terinspirasi</div>
+  <h2 class="title reveal" style="margin-bottom:30px">Perayaan <em>Terbaru</em></h2>
+  <a class="tilt frame reveal" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener">
+    <img loading="lazy" src="img/maheswara-1-2.png" alt="Perayaan terbaru Maheswara">
+    <span class="play">▶</span>
+  </a>
+</section>
+
 <section id="ikuti" style="min-height:auto">
   <div class="eyebrow reveal">Follow Us</div>
   <h2 class="title reveal" style="margin-bottom:20px">Dapatkan lebih banyak <em>inspirasi</em></h2>
@@ -258,6 +283,7 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
     <a class="btn" href="https://www.tiktok.com/@maheswaraweddingplanner" target="_blank" rel="noopener">TikTok</a>
     <a class="btn" href="https://www.bridestory.com/id/maheswara" target="_blank" rel="noopener">Bridestory</a>
   </div>
+  <div class="thumbs reveal"><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-11.png" alt="Maheswara wedding"></a><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-12.png" alt="Maheswara wedding"></a><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-13.png" alt="Maheswara wedding"></a><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-14.png" alt="Maheswara wedding"></a><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-15.png" alt="Maheswara wedding"></a><a class="tilt thumb" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener"><img loading="lazy" src="img/maheswara-16.png" alt="Maheswara wedding"></a></div>
 </section>
 
 <section id="kontak">
@@ -268,7 +294,7 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
     <label>Nama*<input name="nama" required></label>
     <label>Pilih Cara Dihubungi*<select name="via" required><option value="">Pilih salah satu</option><option>WhatsApp</option><option>Email</option><option>Telepon</option></select></label>
     <label>Jenis Pernikahan<select name="jenis"><option>Tradisional</option><option>Nasional</option><option>Internasional</option></select></label>
-    <label>Pilihan Paket<select name="paket"><option>All in One Package</option><option>Customized Package</option><option>Full Wedding Planner</option><option>Wedding Organizer</option><option>Belum tahu</option></select></label>
+    <label>Paket yang Diminati<select name="paket"><option>All in One Package</option><option>Customized Package</option><option>Full Wedding Planner</option><option>Wedding Organizer</option><option>Belum tahu</option></select></label>
     <label>Tanggal Acara<input type="date" name="tgl"></label>
     <label>Lokasi / Venue<input name="lok"></label>
     <label class="full">Ceritakan Tentang Pernikahan Anda<textarea name="cerita" rows="4"></textarea></label>
@@ -471,6 +497,25 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 });
 setInterval(()=>{if(document.hidden)return;
   const el=state.gal.el.closest('section');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)rot('gal',1)},4500);
+
+/* ---------- language toggle ---------- */
+const TR={"Tentang Kami": "About Us", "Kelebihan": "Advantages", "Paket": "Packages", "Venue": "Venue", "Testimoni": "Testimonials", "Galeri": "Gallery", "Kontak": "Contact", "Wedding Planner sejak 2007": "Wedding Planner since 2007", "Pelajari Lebih Lanjut": "Learn More", "Partner Terpercaya Kami": "Our Trusted Partners", "Klien Tercinta Kami": "Our Beloved Clients", "Masalah yang sering dihadapi calon pengantin saat mempersiapkan pernikahan :": "Problems couples often face when preparing a wedding:", "Bingung harus mulai dari mana": "Confused about where to start", "Butuh pendampingan dalam proses": "Need guidance throughout the process", "Paket pernikahan yang tidak fleksibel": "Inflexible wedding packages", "Harga paket membingungkan": "Confusing package prices", "Banyak biaya tambahan di akhir": "Many extra costs at the end", "Waktu mepet untuk persiapan": "Tight preparation time", "Tidak ada waktu": "No time", "Takut salah pilih vendor": "Afraid of choosing the wrong vendor", "Tidak memiliki gambaran dana": "No clear idea of the budget", "Konsultasi Gratis": "Free Consultation", "Tidak perlu khawatir": "No need to worry", "PUNYA SOLUSI TERBAIK": "HAS THE BEST SOLUTION", "Tahun Pengalaman": "Years of Experience", "Dipercaya sejak 2007 untuk membantu persiapan pernikahan tradisional, nasional dan internasional.": "Trusted since 2007 to help prepare traditional, national and international weddings.", "Hotel bintang 5 dengan budget lebih hemat": "5-star hotels on a smarter budget", "Mewujudkan acara pernikahan impian dengan pilihan vendor premium, fasilitas dan pelayanan berkualitas namun dengan harga yang pasti lebih terjangkau.": "Making your dream wedding happen with premium vendors, quality facilities and service, at prices that are certainly more affordable.", "Paket lengkap dan fleksibel": "Complete and flexible packages", "Tidak perlu khawatir vendor tidak cocok karena seluruh paket dibuat sesuai dengan keinginan, kebutuhan dan tentunya budget yang dimiliki calon pengantin.": "No need to worry about mismatched vendors, because every package is made to fit the wishes, needs and budget of the couple.", "Kemudahan cara pembayaran": "Easy payment options", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan pilihan calon pengantin.": "Installments and credit card payments are available. Discuss the schedule that suits you best.", "Berdiri sejak 2007 untuk mempersiapkan pernikahan ratusan calon pengantin.": "Established in 2007 to prepare the weddings of hundreds of couples.", "Meminimalisir stress dan membuat persiapan menjadi menyenangkan dan nyaman.": "Minimizing stress and making preparation enjoyable and comfortable.", "Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.": "Providing the best solutions so the couple and their families can stay calm and enjoy every step toward their special day.", "Pilihan Paket": "Choose Your Package", "Cocok untuk calon pengantin yang tidak memiliki banyak waktu untuk mencari vendor satu persatu. Efisien dari sisi waktu dan biaya.": "Perfect for couples without much time to look for vendors one by one. Efficient in time and cost.", "Cocok untuk calon pengantin yang sudah memiliki alokasi budget tertentu dan vendor-vendor yang diinginkan. Maheswara hadir untuk membuat paket sesuai budget dan memberikan alternatif terbaik.": "Perfect for couples who already have a set budget and preferred vendors. Maheswara builds a package to fit your budget and offers the best alternatives.", "Cocok untuk calon pengantin yang memilih untuk merencanakan semua persiapan pernikahan dari awal dan membutuhkan rekomendasi vendor-vendor terpercaya. Sangat efisien dan hemat waktu.": "Perfect for couples who want to plan everything from scratch and need trusted vendor recommendations. Very efficient and time-saving.", "Cocok untuk calon pengantin yang sudah memilih semua vendor dan hanya membutuhkan tim untuk koordinasi pada hari H (syarat dan ketentuan berlaku).": "Perfect for couples who have chosen all vendors and only need a team to coordinate on the big day (terms and conditions apply).", "Hubungi Maheswara Wedding Planner": "Contact Maheswara Wedding Planner", "Untuk informasi detail paket yang lebih lengkap, klik tombol kontak dibawah. Tim kami dengan senang hati akan membantu Anda.": "For more complete package details, click the contact button below. Our team will gladly help you.", "Chat Via WhatsApp": "Chat via WhatsApp", "Pilihan Terbaik Untuk Pernikahan Impian": "The Best Choice for Your Dream Wedding", "Venue Indoor": "Indoor Venue", "Venue Outdoor": "Outdoor Venue", "Love Letters from": "Love Letters from", "Our Brides": "Our Brides", "Bride Testimonials on Bridestory": "Bride Testimonials on Bridestory", "Lihat di Bridestory": "See on Bridestory", "Lihat Galeri Kami": "Visit Our Gallery", "FAQ": "FAQ", "Pertanyaan yang": "Frequently", "Sering Ditanyakan": "Asked Questions", "Paket apa saja yang tersedia di Maheswara?": "What packages does Maheswara offer?", "Tersedia empat pilihan: All in One Package, Customized Package, Full Wedding Planner, dan Wedding Organizer. Semuanya bisa dibicarakan sesuai kebutuhan dan budget Anda.": "There are four options: All in One Package, Customized Package, Full Wedding Planner and Wedding Organizer. All can be tailored to your needs and budget.", "Bisakah saya memakai vendor pilihan sendiri?": "Can I use my own vendors?", "Bisa. Customized Package cocok untuk calon pengantin yang sudah punya vendor dan alokasi budget tertentu. Maheswara membuat paket sesuai budget dan memberikan alternatif terbaik.": "Yes. The Customized Package suits couples who already have vendors and a set budget. Maheswara builds a package to fit your budget and offers the best alternatives.", "Apakah ada biaya tambahan di akhir?": "Are there extra costs at the end?", "Maheswara membantu memberi gambaran dana sejak awal dengan harga paket yang pasti, sehingga Anda tidak dibingungkan oleh biaya tambahan di akhir.": "Maheswara gives you a clear budget picture from the start with fixed package prices, so you are not surprised by extra costs at the end.", "Bagaimana cara pembayarannya?": "How does payment work?", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan tim kami.": "Installments and credit card payments are available. Discuss the schedule that suits you best with our team.", "Jenis pernikahan apa yang bisa ditangani?": "What kinds of weddings can you handle?", "Pernikahan tradisional, nasional dan internasional, di venue indoor maupun outdoor, termasuk hotel bintang 5 dengan budget yang lebih hemat.": "Traditional, national and international weddings, at indoor or outdoor venues, including 5-star hotels on a smarter budget.", "Saya hanya butuh tim di hari H, bisa?": "I only need a team on the big day, is that possible?", "Bisa, lewat paket Wedding Organizer untuk calon pengantin yang sudah memilih semua vendor (syarat dan ketentuan berlaku).": "Yes, through the Wedding Organizer package for couples who have chosen all vendors (terms and conditions apply).", "Terinspirasi": "Be Inspired", "Perayaan": "Latest", "Terbaru": "Celebration", "Dapatkan lebih banyak": "Get more", "inspirasi": "inspiration", "Hubungi": "Contact", "Kami": "Us", "Isi formulir ini dan tim kami akan segera menghubungi Anda.": "Fill out this form and our team will get back to you shortly.", "Nama*": "Name*", "Pilih Cara Dihubungi*": "Preferred Contact Method*", "Jenis Pernikahan": "Wedding Type", "Paket yang Diminati": "Package of Interest", "Tanggal Acara": "Event Date", "Lokasi / Venue": "Location / Venue", "Ceritakan Tentang Pernikahan Anda": "Tell Us About Your Wedding", "Kirim via WhatsApp": "Send via WhatsApp", "Hubungi kami": "Contact us", "Telepon": "Phone", "Dipercaya Sejak 2007": "Trusted Since 2007"};
+const PH={nama:'Name',lok:'',cerita:''};
+const orig=new Map();
+function setLang(l){
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&!/SCRIPT|STYLE/.test(n.parentElement.tagName)&&n.nodeValue.trim()?1:2});
+  let n;while(n=w.nextNode()){
+    const k=n.nodeValue.replace(/\s+/g,' ').trim();
+    if(!orig.has(n))orig.set(n,n.nodeValue);
+    if(l==='en'&&TR[k]){n.nodeValue=orig.get(n).replace(orig.get(n).trim(),TR[k])}
+    else if(l==='id'){n.nodeValue=orig.get(n)}
+  }
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+try{if(localStorage.getItem('lang')==='en')setLang('en')}catch(e){}
 document.getElementById('f').addEventListener('submit',e=>{
   e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
   const t='Halo Maheswara Wedding Planner, saya ingin berkonsultasi.\n\nNama: '+d.nama+'\nDihubungi via: '+d.via+'\nJenis pernikahan: '+d.jenis+'\nPaket: '+d.paket+'\nTanggal acara: '+(d.tgl||'-')+'\nLokasi: '+(d.lok||'-')+'\nCerita: '+(d.cerita||'-');
