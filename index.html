@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maheswara Wedding Planner 3D</title>
+<title>Maheswara Wedding Planner 4D</title>
 <link rel="icon" href="img/cropped-IMG_9665-1-270x270.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -128,11 +128,168 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
 .lang{display:flex;gap:4px;margin-left:18px}
 .lang button{background:transparent;border:1px solid #d9c27a88;color:var(--cream);padding:6px 11px;border-radius:20px;font:600 .7rem Montserrat;cursor:pointer}
 .lang button.on{background:var(--olive);border-color:var(--olive)}
+
+/* ---------- 4D: time dimension HUD ---------- */
+#chrono{position:fixed;right:1.6vw;top:50%;transform:translateY(-50%);z-index:9;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;text-align:center}
+#chrono .yr{font:700 1.7rem 'Cormorant Garamond',serif;color:var(--gold);text-shadow:0 0 22px #d9c27a77;font-variant-numeric:tabular-nums;line-height:1}
+#chrono .phase{font:600 .58rem Montserrat,sans-serif;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+#chrono .chap{font:italic 500 .85rem 'Cormorant Garamond',serif;color:var(--olive);min-height:1.1em;max-width:90px}
+#chrono .rail{position:relative;width:2px;height:34vh;background:linear-gradient(#d9c27a22,#d9c27aaa,#d9c27a22);border-radius:2px}
+#chrono .tick{position:absolute;left:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:#1b170f;border:1px solid var(--gold);cursor:pointer;pointer-events:auto;transition:.3s}
+#chrono .tick::after{content:"";position:absolute;inset:-9px}
+#chrono .tick:hover,#chrono .tick.on{background:var(--gold);box-shadow:0 0 12px #d9c27acc}
+#knob{position:absolute;left:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:radial-gradient(circle,#fff,var(--gold));box-shadow:0 0 18px 5px #d9c27aaa;pointer-events:none}
+#compass{position:fixed;left:1.6vw;bottom:2vh;z-index:9;display:flex;align-items:center;gap:10px}
+#compass canvas{width:72px;height:72px;display:block;opacity:.9;filter:drop-shadow(0 0 10px #d9c27a66)}
+#compass small{display:block;font:600 .55rem Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olive)}
+#snd{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:#41392a99;color:var(--gold);font-size:1rem;cursor:pointer;transition:.3s;backdrop-filter:blur(6px)}
+#snd.on{background:var(--gold);color:var(--brown);box-shadow:0 0 18px #d9c27aaa}
+.flash{position:fixed;inset:0;z-index:8;pointer-events:none;background:radial-gradient(circle at 50% 45%,#ffe9a855,transparent 65%);opacity:0;transition:opacity .9s}
+.flash.go{opacity:1;transition:opacity .08s}
+@media(max-width:900px){#chrono .rail,#chrono .chap{display:none}#chrono{top:auto;bottom:14px;right:14px;transform:none}#compass{bottom:14px}#compass canvas{width:54px;height:54px}#compass small{display:none}}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none}.track{animation:none}}
+
+/* ---------- 4D design v2: "ivory paper floating in time" ----------
+   Dark time-cycling 3D world behind, ivory editorial paper cards in front,
+   pink accent, horizontal timeline. Delete this block to restore v1. */
+:root{--paper:#fffdf4;--ink:#41392A;--moss:#6b6d2e}
+#hero{position:relative;overflow:hidden}
+#hero::before{content:"4D";position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);font:700 min(46vw,560px)/1 'Cormorant Garamond',serif;color:transparent;-webkit-text-stroke:1px #d9c27a30;pointer-events:none;letter-spacing:-.04em}
+.eyebrow{color:var(--gold);letter-spacing:.4em}
+.eyebrow::before{content:"";display:inline-block;width:38px;height:1px;background:var(--gold);vertical-align:middle;margin-right:16px}
+.eyebrow::after{content:"";display:inline-block;width:38px;height:1px;background:var(--gold);vertical-align:middle;margin-left:16px}
+.title{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.01em}
+.title em{color:#f3b7c4;font-style:italic}
+.panel,.faq details{background:var(--paper);color:var(--ink);border:1px solid #999B5366;border-radius:4px;backdrop-filter:none;box-shadow:10px 12px 0 #d9c27a55,0 30px 60px #0008}
+.panel.light{background:linear-gradient(#fffdf4ee,#fffdf4ee),var(--bgimg) center/cover}
+.tilt:hover,.faq details[open]{box-shadow:14px 16px 0 #E2265855,0 40px 80px #000a}
+.tilt h3{color:var(--moss)}
+.tilt .num{color:var(--pink);font-style:italic}
+.tilt .num::after{content:"";display:block;width:34px;height:2px;background:var(--gold);margin:6px 0 4px}
+.tilt p,.panel p{color:#4d4533}
+.photo{border-radius:3px 3px 0 0}
+.band{background:linear-gradient(#fffdf4f2,#fffdf4ee),url(img/compress-23-e1698896820249.png) center/cover;border-radius:6px;border:1px solid #d9c27a88}
+.band .panel{background:#fff;color:var(--ink);box-shadow:6px 8px 0 #999B5340}
+.faq summary{color:var(--ink)}
+.faq summary::after{color:var(--pink)}
+.faq p{color:#4d4533;opacity:1}
+.form label{color:var(--moss)}
+.form input,.form select,.form textarea{background:#fff;color:var(--ink);border:1px solid #999B5399;border-radius:3px}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--pink)}
+.cta-row a{color:var(--ink)}
+.btn{background:var(--pink);border-radius:2px;letter-spacing:.2em;box-shadow:6px 6px 0 #d9c27a,0 14px 30px #0008}
+.btn:hover{background:var(--paper);color:var(--pink);transform:translate(-2px,-4px);box-shadow:9px 10px 0 #d9c27a,0 20px 40px #0008}
+.btn.wa{background:#1f9d55}.btn.wa:hover{background:var(--paper);color:#1f9d55}
+.tabs button{border-radius:2px}
+.tabs button.on{background:var(--pink);border-color:var(--pink)}
+.stat{color:#f3b7c4;text-shadow:0 0 60px #E2265866}
+.solution .big b{color:var(--gold)}
+.ctrl button{border-radius:2px;background:var(--paper);color:var(--ink)}
+.ctrl button:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+.ring figure,.venue-grid figure,.frame{border:6px solid var(--paper);border-radius:2px;box-shadow:0 30px 60px #000a}
+.thumb{border:4px solid var(--paper);border-radius:2px}
+.prog{background:linear-gradient(90deg,var(--pink),var(--gold));height:4px}
+/* timeline: horizontal pill docked at the bottom */
+#chrono{right:auto;left:50%;top:auto;bottom:16px;transform:translateX(-50%);flex-direction:row;gap:18px;align-items:center;background:#fffdf4f0;color:var(--ink);padding:9px 22px;border-radius:50px;box-shadow:6px 6px 0 #d9c27a,0 14px 40px #000a;border:1px solid #999B5366}
+#chrono .yr{color:var(--pink);text-shadow:none;font-size:1.5rem}
+#chrono .phase{color:var(--moss);opacity:1;min-width:84px;text-align:left}
+#chrono .chap{color:var(--ink);min-height:0;max-width:none;min-width:84px;text-align:right}
+#chrono .rail{width:min(26vw,300px);height:2px;background:linear-gradient(90deg,#999B5366,#E2265899,#999B5366)}
+#chrono .tick{top:50%;left:0;background:var(--paper);border-color:var(--pink)}
+#chrono .tick:hover,#chrono .tick.on{background:var(--pink);box-shadow:0 0 12px #E22658aa}
+#knob{top:50%;background:radial-gradient(circle,#fff,var(--pink));box-shadow:0 0 16px 4px #E2265899}
+#compass small{color:var(--gold)}
+#snd{border-radius:2px;background:var(--paper);color:var(--ink);border-color:var(--paper)}
+#snd.on{background:var(--pink);color:#fff}
+/* ---------- layout fixes ---------- */
+main{overflow-x:clip}   /* the 3D gallery ring pokes past the viewport and made phones scroll sideways */
+nav a{white-space:nowrap}
+@media(max-width:1180px){nav ul{gap:16px}nav a{font-size:.68rem;letter-spacing:.09em}.lang{margin-left:8px}}
+@media(max-width:940px){nav ul{display:none}}
+footer{padding-bottom:110px}
+@media(max-width:1100px){#compass small{display:none}#compass canvas{width:54px;height:54px}}
+
+/* ---------- entering the dimension ---------- */
+#gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6vw;background:radial-gradient(ellipse at center,#0b0906b8 0%,#0b0906f2 78%);transition:opacity .8s,visibility .8s}
+#gate.out{opacity:0;visibility:hidden;pointer-events:none}
+#gate.gone{display:none}
+#gate h1{font-size:clamp(2.6rem,8vw,6rem);line-height:1;margin:14px 0 20px;text-shadow:0 10px 50px #000}
+#gate h1 em{display:block;color:#f3b7c4}
+#gate p{max-width:520px;line-height:1.8;opacity:.85}
+.gate-btns{display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:34px}
+#gate .go{margin-top:0;position:relative;font-size:.85rem;padding:16px 40px}
+#gate .go::before,#gate .go::after{content:"";position:absolute;inset:-8px;border:1px solid var(--pink);border-radius:4px;animation:ping 2.4s infinite;pointer-events:none}
+#gate .go::after{animation-delay:1.2s}
+@keyframes ping{from{opacity:.9;transform:scale(1)}to{opacity:0;transform:scale(1.4,1.9)}}
+#gate .skip{background:none;border:0;color:var(--cream);opacity:.6;font:600 .7rem Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:6px}
+#gate .skip:hover{opacity:1;color:var(--gold)}
+.gate-lang{position:absolute;top:22px;right:22px;display:flex;gap:4px}
+.gate-lang button{background:transparent;border:1px solid #d9c27a88;color:var(--cream);padding:6px 11px;border-radius:20px;font:600 .7rem Montserrat,sans-serif;cursor:pointer}
+.gate-lang button.on{background:var(--olive);border-color:var(--olive)}
+#warpflash{position:fixed;inset:0;z-index:99;pointer-events:none;opacity:0;background:radial-gradient(circle,#fffdf0,#ffe9a8 55%,#fff)}
+#rim{position:fixed;inset:0;z-index:7;pointer-events:none;box-shadow:inset 0 0 110px 8px #d9c27a22}
+nav,#chrono,#compass{transition:opacity 1.2s}
+body.gated nav,body.gated #chrono,body.gated #compass,body.gated .prog{opacity:0;pointer-events:none}
+#tele{font-family:ui-monospace,Consolas,monospace;white-space:pre;line-height:1.55;letter-spacing:.06em;margin-bottom:8px;color:var(--gold)}
+body.inside #hero>*{animation:arrive 1.7s cubic-bezier(.2,.8,.2,1) both}
+body.inside #hero>*:nth-child(2){animation-delay:.12s}body.inside #hero>*:nth-child(3){animation-delay:.3s}body.inside #hero>*:nth-child(4){animation-delay:.5s}
+@keyframes arrive{from{opacity:0;transform:translateZ(-900px) scale(.55)}to{opacity:1;transform:none}}
+/* panels emerge from depth instead of sliding up */
+.reveal{transform:translateZ(-480px) translateY(36px) rotateX(14deg)}
+.reveal.in{transform:none}
+@media(prefers-reduced-motion:reduce){body.inside #hero>*{animation:none}#gate .go::before,#gate .go::after{animation:none}}
+
+/* "Hari H": a pinned, scrubbable wedding day */
+.harih{display:block;height:440vh;min-height:0;padding:0;perspective:none;text-align:left}
+.hh-pin{position:sticky;top:0;height:100vh;height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;justify-items:center;padding:84px 6vw 100px;text-align:center}
+.hh-head .title{font-size:clamp(1.7rem,4vw,3rem)}
+.hh-head .eyebrow{margin-bottom:10px}
+.hh-body{width:100%;max-width:1150px;display:flex;align-items:center}
+.hh-card{max-width:400px;text-align:left;padding:24px 28px}
+.hh-clock{font:italic 700 3.6rem/1 'Cormorant Garamond',serif;color:var(--pink);font-variant-numeric:tabular-nums}
+.hh-card h3{font-size:2rem;margin:8px 0 10px;color:var(--moss)}
+.hh-card p{line-height:1.7;font-size:.92rem}
+.hh-scrub{width:min(640px,88vw)}
+.hh-scrub input{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:linear-gradient(90deg,#f6c98a,#ffd9a0,#ff9a8a,#6a5ab0,#2a3070);outline:none;cursor:pointer}
+.hh-scrub input::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--pink);border:4px solid var(--paper);box-shadow:0 0 0 1px var(--pink),0 6px 18px #000a}
+.hh-scrub input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--pink);border:4px solid var(--paper)}
+.hh-stops{display:flex;justify-content:space-between;margin-top:14px}
+.hh-stops button{background:none;border:0;color:var(--cream);font:600 .72rem Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;opacity:.6;transition:.3s;padding:6px 4px}
+.hh-stops button{text-shadow:0 1px 8px #000c}
+.hh-stops button.on{opacity:1;color:var(--pink);background:var(--paper);border-radius:2px;text-shadow:none;padding:6px 10px}
+@media(max-height:700px){.hh-pin{padding-top:74px}.hh-head .eyebrow{display:none}.hh-clock{font-size:2.6rem}.hh-card h3{font-size:1.5rem;margin:4px 0 6px}.hh-card p{font-size:.85rem;line-height:1.55}.hh-card .btn{margin-top:14px!important;padding:11px 24px}}
+@media(max-width:800px){.hh-body{align-items:flex-end}.hh-card{max-width:none;padding:20px 22px}.hh-clock{font-size:2.6rem}.hh-card h3{font-size:1.5rem}.hh-card p{min-height:0;font-size:.88rem}.hh-card .btn{display:none}.hh-pin{padding-top:84px}}
+@media(max-width:900px){#chrono{left:50%;right:auto;transform:translateX(-50%);bottom:12px;padding:7px 16px;gap:12px}#chrono .rail,#chrono .chap{display:none}#chrono .phase{min-width:0}#compass{bottom:14px}}
 </style>
 </head>
 <body>
 <div class="prog" id="prog"></div>
 <canvas id="bg"></canvas>
+<div class="flash" id="flash"></div>
+<div id="rim" aria-hidden="true"></div>
+<div id="warpflash" aria-hidden="true"></div>
+<script>window.__gateFallback=setTimeout(function(){var g=document.getElementById("gate");if(g)g.className="gone";document.documentElement.style.overflow=""},8000)</script>
+<noscript><style>#gate{display:none!important}</style></noscript>
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+  <div class="gate-lang"><button type="button" data-l="id" class="on">ID</button><button type="button" data-l="en">EN</button></div>
+  <div class="eyebrow">Maheswara Wedding Planner</div>
+  <h1 id="gate-h">Masuk ke <em>Dimensi Keempat</em></h1>
+  <p>Di sini waktu menjadi ruang. Berjalanlah melewati satu hari pernikahan, dari fajar sampai pesta malam.</p>
+  <div class="gate-btns">
+    <button type="button" class="btn go" id="gate-go">Masuk ke Dimensi</button>
+    <button type="button" class="skip" id="gate-mute">Tanpa suara</button>
+  </div>
+</div>
+<aside id="chrono" aria-label="Garis waktu">
+  <div class="yr" id="yr">2007</div>
+  <div class="phase" id="phase">Fajar</div>
+  <div class="rail" id="rail"><i id="knob"></i></div>
+  <div class="chap" id="chap"></div>
+</aside>
+<div id="compass">
+  <canvas id="tess" width="144" height="144" aria-hidden="true"></canvas>
+  <div><small id="tele">KOORDINAT 4D</small><button id="snd" type="button" aria-label="Suara latar" aria-pressed="false">♪</button></div>
+</div>
 <nav>
   <a class="logo" href="#hero"><img src="img/Logo-1-Copy.png" alt="Maheswara Wedding Planner"></a>
   <ul>
@@ -164,6 +321,27 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
     <p>Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.</p>
   </div>
   <a class="btn reveal" href="#kelebihan">Pelajari Lebih Lanjut</a>
+</section>
+
+<section id="harih" class="harih">
+  <div class="hh-pin">
+    <div class="hh-head">
+      <div class="eyebrow">Hari H</div>
+      <h2 class="title" style="margin-bottom:0">Satu Hari, <em>Empat Babak</em></h2>
+    </div>
+    <div class="hh-body">
+      <div class="panel hh-card" aria-live="polite">
+        <div class="hh-clock" id="hh-clock">05:30</div>
+        <h3 id="hh-t">Persiapan</h3>
+        <p id="hh-p"></p>
+        <a class="btn" href="#kontak" style="margin-top:22px">Rencanakan Hari Anda</a>
+      </div>
+    </div>
+    <div class="hh-scrub">
+      <input type="range" id="hh-r" min="0" max="1000" value="0" aria-label="Waktu hari pernikahan">
+      <div class="hh-stops"><button type="button">Persiapan</button><button type="button">Akad</button><button type="button">Resepsi</button><button type="button">Pesta</button></div>
+    </div>
+  </div>
 </section>
 
 <section id="partner" style="min-height:auto;padding:70px 0">
@@ -323,7 +501,8 @@ footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
 <script>
 /* ---------- THREE.JS BACKGROUND ---------- */
 const canvas=document.getElementById('bg');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
+const MOBILE=matchMedia('(pointer:coarse)').matches||innerWidth<800;
+const renderer=new THREE.WebGLRenderer({canvas,antialias:!MOBILE,alpha:false,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 const scene=new THREE.Scene();
 scene.background=new THREE.Color(0x1b170f);
@@ -410,28 +589,408 @@ function resize(){
 }
 addEventListener('resize',resize);resize();
 
-const clock=new THREE.Clock();
+/* ---------- 4D: the time dimension ----------
+   W axis #1: a real tesseract (hypercube) rotating through 4D space.
+   W axis #2: time itself — scroll travels 2007 -> 2026 while the light cycles
+   dawn -> golden hour -> dusk -> night; scroll speed warps time (FOV, wind),
+   and every chapter change fires a "4D cinema" gust, light flash, chime, haptic. */
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let vel=0,warp=0,gust=0,gustDir=1,night=0,curSec=-1,DT=.016;
+const kk=n=>1-Math.pow(1-n,DT*60);   // frame-rate independent smoothing factor
+const TOD=[
+  {p:0,   bg:0x1b170f,key:0xffe2a0,fill:0x999B53,tint:0xc9b49c,id:'Fajar',en:'Dawn'},
+  {p:.3,  bg:0x2b2118,key:0xffd9a0,fill:0xe8b9b0,tint:0xfff0dc,id:'Pagi',en:'Morning'},
+  {p:.55, bg:0x3a2c14,key:0xffc860,fill:0xd9a24a,tint:0xffd9a0,id:'Emas',en:'Golden hour'},
+  {p:.8,  bg:0x2c1a2e,key:0xff9a8a,fill:0x8a5ab0,tint:0xd890b0,id:'Senja',en:'Dusk'},
+  {p:1,   bg:0x0b0e1c,key:0xb8c8ff,fill:0x4a5ab0,tint:0x2c3668,id:'Malam',en:'Night'}
+];
+const _a=new THREE.Color(),_b=new THREE.Color();const tintC=new THREE.Color();
+function todAt(p,prop,out){
+  let i=0;while(i<TOD.length-2&&p>TOD[i+1].p)i++;
+  const a=TOD[i],b=TOD[i+1],k=Math.min(1,Math.max(0,(p-a.p)/(b.p-a.p))),e=k*k*(3-2*k);
+  _a.setHex(a[prop]);_b.setHex(b[prop]);return out.copy(_a).lerp(_b,e);
+}
+function todName(p){
+  let i=0;while(i<TOD.length-2&&p>TOD[i+1].p)i++;
+  const a=TOD[i],b=TOD[i+1],n=(p-a.p)/(b.p-a.p)>.5?b:a;
+  return document.documentElement.lang==='en'?n.en:n.id;
+}
+/* tesseract maths: 16 vertices (±1,±1,±1,±1), 32 edges, rotate in 3 planes incl. W, project 4D->3D */
+const TV=[],TE=[];
+for(let i=0;i<16;i++)TV.push([i&1?1:-1,i&2?1:-1,i&4?1:-1,i&8?1:-1]);
+for(let i=0;i<16;i++)for(let b=0;b<4;b++){const j=i^(1<<b);if(j>i)TE.push([i,j])}
+function tess(a,b,c,out){
+  const ca=Math.cos(a),sa=Math.sin(a),cb=Math.cos(b),sb=Math.sin(b),cc=Math.cos(c),sc=Math.sin(c);
+  for(let i=0;i<16;i++){
+    let [x,y,z,w]=TV[i],t;
+    t=x*ca-w*sa;w=x*sa+w*ca;x=t;      // XW plane
+    t=y*cb-z*sb;z=y*sb+z*cb;y=t;      // YZ plane
+    t=z*cc-w*sc;w=z*sc+w*cc;z=t;      // ZW plane
+    const s=1.9/(2.7-w);out[i]=[x*s,y*s,z*s];
+  }
+  return out;
+}
+const tp=Array(16);
+const tGeo=new THREE.BufferGeometry();tGeo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(TE.length*6),3));
+const tLines=new THREE.LineSegments(tGeo,new THREE.LineBasicMaterial({color:0xffe9a8,transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false}));
+const tPGeo=new THREE.BufferGeometry();tPGeo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(48),3));
+const tPts=new THREE.Points(tPGeo,new THREE.PointsMaterial({color:0xffffff,size:.16,transparent:true,opacity:.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+const tess3=new THREE.Group();tess3.add(tLines,tPts);tess3.scale.setScalar(2.3);rings.add(tess3);
+function updateTess3(t){
+  tess(t*.35,t*.23,t*.17+vel*40,tp);
+  const L=tGeo.attributes.position.array,P=tPGeo.attributes.position.array;
+  TE.forEach(([i,j],k)=>{L.set(tp[i],k*6);L.set(tp[j],k*6+3)});
+  for(let i=0;i<16;i++)P.set(tp[i],i*3);
+  tGeo.attributes.position.needsUpdate=tPGeo.attributes.position.needsUpdate=true;
+}
+/* HUD compass: same tesseract drawn in 2D, spins faster as you scroll through time */
+const tc=document.getElementById('tess'),tx=tc.getContext('2d'),tq=Array(16);let tAng=0;
+function drawCompass(dt){
+  tAng+=dt*(.6+vel*60);
+  tess(tAng*.7,tAng*.5,tAng*.3,tq);
+  tx.clearRect(0,0,144,144);tx.lineWidth=1.4;tx.strokeStyle='#d9c27a';
+  const pr=p=>{const s=34/(1+p[2]*.12);return[72+p[0]*s,72+p[1]*s]};
+  tx.globalAlpha=.8;tx.beginPath();
+  TE.forEach(([i,j])=>{const a=pr(tq[i]),b=pr(tq[j]);tx.moveTo(a[0],a[1]);tx.lineTo(b[0],b[1])});tx.stroke();
+  tx.fillStyle='#fffbe0';tx.globalAlpha=1;
+  tq.forEach(p=>{const q=pr(p);tx.beginPath();tx.arc(q[0],q[1],2,0,6.3);tx.fill()});
+}
+/* chapter timeline: ticks per section, knob = "now" */
+const CH={hero:'Prolog',tentang:'Awal Cerita',harih:'Hari H',partner:'Rekan',masalah:'Tantangan',kelebihan:'Solusi',paket:'Paket',venue:'Venue',testimoni:'Kisah',galeri:'Galeri',faq:'Tanya',inspirasi:'Inspirasi',ikuti:'Ikuti',kontak:'Kontak'};
+const secs=[...document.querySelectorAll('main>section')];
+const hhEl=document.getElementById('harih'),secTopC=[],secBotC=[];let hhTopC=0,hhH=0,measureQ=false;
+function measure(){
+  measureQ=false;const y=scrollY;
+  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();secTopC[i]=r.top+y;secBotC[i]=r.bottom+y});
+  const r=hhEl.getBoundingClientRect();hhTopC=r.top+y;hhH=r.height;
+}
+function queueMeasure(){if(!measureQ){measureQ=true;requestAnimationFrame(measure)}}
+addEventListener('resize',queueMeasure);addEventListener('load',()=>{measure();setTimeout(measure,1500)});
+try{new ResizeObserver(queueMeasure).observe(document.body)}catch(e){}   // lazy images change the page height
+measure();
+const rail=document.getElementById('rail'),knob=document.getElementById('knob'),yrEl=document.getElementById('yr'),phEl=document.getElementById('phase'),chEl=document.getElementById('chap');
+const ticks=secs.map(s=>{const i=document.createElement('i');i.className='tick';i.title=CH[s.id]||s.id;
+  i.onclick=()=>s.scrollIntoView({behavior:RM?'auto':'smooth'});rail.appendChild(i);return i});
+function layoutTicks(){
+  const h=document.documentElement.scrollHeight-innerHeight;if(h<=0)return;
+  secs.forEach((s,i)=>{const p=(s.offsetTop+s.offsetHeight/2-innerHeight/2)/h;
+    ticks[i].style.left=(Math.min(1,Math.max(0,p))*100)+'%'});
+}
+addEventListener('load',()=>{layoutTicks();setTimeout(layoutTicks,1500)});addEventListener('resize',layoutTicks);layoutTicks();
+/* 4D cinema: gust + flash + chime + haptic on every chapter change */
+const flashEl=document.getElementById('flash');
+function chapterChange(i){
+  chEl.textContent=CH[secs[i].id]||'';
+  ticks.forEach((t,k)=>t.classList.toggle('on',k===i));
+  if(curSec<0){curSec=i;return}
+  curSec=i;if(RM)return;
+  gust=1;gustDir=Math.random()<.5?-1:1;
+  flashEl.classList.add('go');setTimeout(()=>flashEl.classList.remove('go'),90);
+  if(navigator.vibrate&&(!navigator.userActivation||navigator.userActivation.hasBeenActive))try{navigator.vibrate(10)}catch(e){}
+  chime();
+}
+addEventListener('scroll',()=>{
+  const mid=scrollY+innerHeight*.5;let hit=curSec<0?0:curSec;
+  for(let i=0;i<secs.length;i++)if(secTopC[i]<=mid&&secBotC[i]>mid){hit=i;break}
+  if(hit!==curSec)chapterChange(hit);
+},{passive:true});
+chapterChange(0);
+/* optional generative sound: warm pad whose pitch follows the time of day + chimes */
+let AC=null,master=null,soundOn=false;const pad=[],PB=[110,164.81,220];
+function chime(){
+  if(!soundOn)return;const f=[523.25,587.33,659.25,783.99,880][(Math.random()*5)|0],n=AC.currentTime;
+  const o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;
+  g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(.16,n+.02);g.gain.exponentialRampToValueAtTime(.0001,n+1.8);
+  o.connect(g);g.connect(master);o.start(n);o.stop(n+1.9);
+}
+const sndB=document.getElementById('snd');
+function initAudio(){
+  if(!AC){
+    AC=new(window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+    const lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;lp.connect(master);
+    PB.forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f;o.detune.value=i*5;g.gain.value=.12;o.connect(g);g.connect(lp);o.start();pad.push(o)});
+  }
+  if(AC.state==='suspended')AC.resume();
+}
+function setSound(on){
+  try{initAudio()}catch(e){return}
+  soundOn=on;master.gain.setTargetAtTime(on?.5:0,AC.currentTime,.4);
+  sndB.classList.toggle('on',on);sndB.setAttribute('aria-pressed',on);
+}
+sndB.onclick=()=>setSound(!soundOn);
+
+/* ---------- 4D: "Hari H" — one wedding day you can scrub through ----------
+   While the pinned #harih section is on screen, scroll (or the slider) drives dayT 0..1 =
+   05:30 -> 23:00. The sky follows it and four different 3D worlds fade in and out:
+   Persiapan (bouquet + sunrise) -> Akad (heart + rings) -> Resepsi (string lights) -> Pesta (fireworks). */
+const hh=document.getElementById('harih'),hhR=document.getElementById('hh-r');
+const hhT=document.getElementById('hh-t'),hhP=document.getElementById('hh-p'),hhC=document.getElementById('hh-clock');
+const hhS=[...document.querySelectorAll('.hh-stops button')];
+let dayT=0,hhW=0,dayIdx=-1;
+const _t=new THREE.Color();
+const DAY=[
+  {t:'Persiapan',te:'Preparation',d:'Fajar menyingsing. Rias, bunga, dan keluarga mulai berkumpul. Tim Maheswara sudah lebih dulu di lokasi, supaya Anda bisa mengawali hari dengan tenang.',de:'Dawn breaks. Make-up, flowers and family begin to gather. The Maheswara team is already on site, so you can start the day calmly.'},
+  {t:'Akad',te:'Ceremony',d:'Momen sakral yang dinanti. Rundown berjalan tepat waktu dan setiap vendor berkoordinasi, Anda cukup hadir dan menikmatinya.',de:'The sacred moment you have waited for. The rundown runs on time and every vendor is coordinated; you simply show up and enjoy it.'},
+  {t:'Resepsi',te:'Reception',d:'Lampu-lampu menyala dan para tamu berdatangan. Venue, dekorasi, katering, dan hiburan berjalan selaras sesuai paket pilihan Anda.',de:'The lights come on and guests arrive. Venue, decor, catering and entertainment move in harmony, exactly as your package promised.'},
+  {t:'Pesta',te:'Celebration',d:'Malam dirayakan. Anda dan keluarga berpesta, sementara kami tetap bekerja di balik layar sampai acara selesai dengan sempurna.',de:'The night is yours to celebrate. You and your family party while we keep working behind the scenes until the very last detail is done.'}
+];
+const CW=[.125,.375,.625,.875];
+const cw=(i,t)=>(i===0&&t<CW[0])||(i===3&&t>CW[3])?1:Math.max(0,1-Math.abs(t-CW[i])/.2);
+const hhSpan=()=>hhH-innerHeight;
+const hhTop=()=>hhTopC;
+hhR.addEventListener('input',()=>{measure();scrollTo({top:hhTop()+hhR.value/1000*hhSpan(),behavior:'instant'})});
+hhS.forEach((b,i)=>b.onclick=()=>scrollTo({top:hhTop()+CW[i]*hhSpan(),behavior:RM?'auto':'smooth'}));
+const p2=n=>(n<10?'0':'')+n;
+let clockStr='05:30';
+function updateDay(){
+  const top=hhTopC-scrollY,bot=top+hhH,span=hhSpan();
+  const q=span>0?Math.min(1,Math.max(0,-top/span)):0;
+  hhW+=((top<innerHeight*.5&&bot>innerHeight*.5?1:0)-hhW)*kk(.06);
+  dayT+=(q-dayT)*kk(.12);
+  if(hhW<.01)return;
+  const idx=Math.min(3,Math.floor(dayT*4)),d=DAY[idx],en=document.documentElement.lang==='en';
+  const tt=en?d.te:d.t,pp=en?d.de:d.d,hr=5.5+dayT*17.5;
+  clockStr=p2(Math.floor(hr))+':'+p2(Math.floor((hr%1)*60));
+  if(hhT.textContent!==tt)hhT.textContent=tt;
+  if(hhP.textContent!==pp)hhP.textContent=pp;
+  if(hhC.textContent!==clockStr)hhC.textContent=clockStr;
+  if(document.activeElement!==hhR)hhR.value=q*1000;
+  if(idx!==dayIdx){
+    hhS.forEach((b,k)=>b.classList.toggle('on',k===idx));
+    if(dayIdx>=0&&hhW>.5&&!RM){gust=.8;chime()}
+    dayIdx=idx;
+  }
+}
+/* shared glow sprite */
+const glowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');
+  const gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.3,'rgba(255,255,255,.55)');gr.addColorStop(1,'rgba(255,255,255,0)');
+  g.fillStyle=gr;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)})();
+const glowMat=color=>new THREE.SpriteMaterial({map:glowTex,color,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,depthTest:false});
+const hhG=new THREE.Group();hhG.visible=false;scene.add(hhG);
+/* A · Persiapan: bouquet + rising sun */
+const A=new THREE.Group();hhG.add(A);
+const NBQ=72,flowers=new THREE.InstancedMesh(new THREE.SphereGeometry(.3,10,8),new THREE.MeshStandardMaterial({roughness:.6,transparent:true,emissive:0x2a1018}),NBQ);
+{const fc=[0xf5b8c4,0xfff0e6,0xe88aa0,0xd9c27a,0xfad4dc],o=new THREE.Object3D();
+ for(let i=0;i<NBQ;i++){const y=1-2*(i+.5)/NBQ,r=Math.sqrt(1-y*y),a=i*2.39996;
+  o.position.set(Math.cos(a)*r,y,Math.sin(a)*r).multiplyScalar(1.7+Math.random()*.25);o.scale.setScalar(.8+Math.random()*.6);o.updateMatrix();
+  flowers.setMatrixAt(i,o.matrix);flowers.setColorAt(i,new THREE.Color(fc[i%5]))}}
+const stem=new THREE.Mesh(new THREE.CylinderGeometry(.08,.08,3.2,8),new THREE.MeshStandardMaterial({color:0x6b8f3a,transparent:true}));stem.position.y=-3;
+A.add(flowers,stem);
+const sun=new THREE.Sprite(glowMat(0xffc890));sun.scale.setScalar(18);sun.renderOrder=10;hhG.add(sun);
+/* B · Akad: heart + rings + halo */
+const B=new THREE.Group();hhG.add(B);
+const mkRing=c=>new THREE.Mesh(new THREE.TorusGeometry(.8,.11,24,80),new THREE.MeshStandardMaterial({color:c,metalness:1,roughness:.2,emissive:0x3a2c08,emissiveIntensity:.5,transparent:true}));
+const bR1=mkRing(0xd9c27a),bR2=mkRing(0xf0d890);bR1.position.x=-.55;bR2.position.x=.55;bR2.rotation.y=Math.PI/2;
+const hs=new THREE.Shape();hs.moveTo(0,-1);hs.bezierCurveTo(-.2,-.8,-1.4,-.2,-1.4,.5);hs.bezierCurveTo(-1.4,1.2,-.5,1.5,0,.9);hs.bezierCurveTo(.5,1.5,1.4,1.2,1.4,.5);hs.bezierCurveTo(1.4,-.2,.2,-.8,0,-1);
+const heartG=new THREE.ExtrudeGeometry(hs,{depth:.5,bevelEnabled:true,bevelThickness:.14,bevelSize:.1,bevelSegments:3,curveSegments:24});heartG.center();
+const heart=new THREE.Mesh(heartG,new THREE.MeshStandardMaterial({color:0xf08aa0,metalness:.5,roughness:.3,emissive:0x5a0f24,emissiveIntensity:.6,transparent:true}));
+heart.scale.setScalar(2.2);heart.position.z=-2.2;
+const halo=new THREE.Sprite(glowMat(0xffd890));halo.scale.setScalar(14);halo.position.z=-3;halo.renderOrder=10;
+B.add(heart,bR1,bR2,halo);
+/* C · Resepsi: three strands of twinkling string lights */
+const C=new THREE.Group();hhG.add(C);
+const lampPts=[[],[]],strandLines=[];
+for(let s=0;s<3;s++){const pts=[];
+  for(let k=0;k<28;k++){const u=k/27,v=new THREE.Vector3(-13+26*u,5.6-s*1.5-Math.sin(Math.PI*u)*1.9,-4-s*2.2);pts.push(v);lampPts[k&1].push(v.x,v.y,v.z)}
+  const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x8a7440,transparent:true,depthTest:false}));strandLines.push(ln);C.add(ln)}
+const lamps=lampPts.map(a=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(a,3));
+  const p=new THREE.Points(g,new THREE.PointsMaterial({map:glowTex,color:0xffd890,size:1.5,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,depthTest:false}));p.renderOrder=10;C.add(p);return p});
+/* D · Pesta: fireworks */
+const D=new THREE.Group();hhG.add(D);
+const NP=90,FW=[0xffd890,0xff6a90,0xa0c0ff,0xffffff,0x9be58a,0xe8a0ff],bursts=[];
+for(let b=0;b<7;b++){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(NP*3),3));
+  const pts=new THREE.Points(g,new THREE.PointsMaterial({map:glowTex,size:.9,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,depthTest:false}));
+  pts.frustumCulled=false;pts.renderOrder=10;D.add(pts);bursts.push({pts,vel:new Float32Array(NP*3),age:-Math.random()*3,c:[0,0,0],life:2.4})}
+function respawn(b){
+  const XR=Math.min(10,6.5*camera.aspect);
+  const wide=innerWidth>=800;   // card sits on the left on desktop, so aim the show at the right
+  b.c=[wide?(Math.random()*1.15-.1)*XR:(Math.random()*2-1)*XR,1.5+Math.random()*5,-3-Math.random()*5];b.age=0;b.life=2+Math.random()*.8;
+  b.pts.material.color.setHex(FW[(Math.random()*FW.length)|0]);
+  const sp=3+Math.random()*2.5;
+  for(let i=0;i<NP;i++){const u=Math.random()*2-1,a=Math.random()*6.283,r=Math.sqrt(1-u*u),s=sp*(.55+Math.random()*.45);
+    b.vel[i*3]=r*Math.cos(a)*s;b.vel[i*3+1]=u*s;b.vel[i*3+2]=r*Math.sin(a)*s}
+}
+function layoutProps(){const m=innerWidth<800;[A,B].forEach(g=>{g.position.set(m?0:4.4,m?3.4:.4,0);g.scale.setScalar(m?.55:1)})}
+addEventListener('resize',layoutProps);layoutProps();
+function updateProps(t,dt){
+  hhG.visible=hhW>.01;if(!hhG.visible)return;
+  hhG.position.set(camera.position.x*.5,camera.position.y*.5,camera.position.z-16);
+  const wA=cw(0,dayT)*hhW,wB=cw(1,dayT)*hhW,wC=cw(2,dayT)*hhW,wD=cw(3,dayT)*hhW;
+  A.visible=sun.visible=wA>.01;
+  if(A.visible){A.rotation.y=t*.4;flowers.material.opacity=stem.material.opacity=wA;sun.material.opacity=wA*.9;
+    sun.position.set(-5.5,-6+Math.min(1,dayT/.22)*5.5,-8)}
+  B.visible=wB>.01;
+  if(B.visible){B.rotation.y=Math.sin(t*.4)*.5;bR1.rotation.x=t*.7;bR2.rotation.x=-t*.6;heart.rotation.y=t*.5;
+    bR1.material.opacity=bR2.material.opacity=heart.material.opacity=wB;halo.material.opacity=wB*(.5+.2*Math.sin(t*2))}
+  C.visible=wC>.01;
+  if(C.visible){strandLines.forEach(l=>l.material.opacity=wC*.8);
+    lamps[0].material.opacity=wC*(.65+.35*Math.sin(t*2.2));lamps[1].material.opacity=wC*(.65+.35*Math.cos(t*2.2))}
+  D.visible=wD>.01;
+  if(D.visible)bursts.forEach(b=>{
+    if(b.age<0){b.age+=dt;if(b.age>=0)respawn(b);else{b.pts.material.opacity=0;return}}
+    b.age+=dt;const a=b.age,p=b.pts.geometry.attributes.position.array;
+    for(let i=0;i<NP;i++){p[i*3]=b.c[0]+b.vel[i*3]*a;p[i*3+1]=b.c[1]+b.vel[i*3+1]*a-1.6*a*a;p[i*3+2]=b.c[2]+b.vel[i*3+2]*a}
+    b.pts.geometry.attributes.position.needsUpdate=true;
+    b.pts.material.opacity=wD*.75*Math.pow(Math.max(0,1-a/b.life),1.1);
+    if(a>b.life)b.age=-Math.random()*1.2;
+  });
+}
+
+/* ---------- ENTERING THE DIMENSION ----------
+   Gate -> warp (FOV blows out, camera dives in from far behind, a giant tesseract swallows the view,
+   white flash) -> arrival. Inside: a light tunnel whose speed follows your scroll, a camera that looks
+   around with the mouse / phone gyro, a glowing rim that pulses with speed, and live 4D coordinates. */
+const gate=document.getElementById('gate'),warpFlash=document.getElementById('warpflash'),rim=document.getElementById('rim'),tele=document.getElementById('tele');
+clearTimeout(window.__gateFallback);
+const WARP=3.6;
+let entryState=RM?'in':'gate',warpStart=0,warpK=0,entryOff=0,rimW=-1,frN=0;
+document.body.classList.add(entryState==='gate'?'gated':'inside');
+if(entryState==='gate'){
+  try{history.scrollRestoration='manual'}catch(e){}
+  scrollTo(0,0);document.documentElement.style.overflow='hidden';
+}else gate.classList.add('gone');
+const white=new THREE.Color(0xffffff);
+/* tunnel streaks */
+const NS=360,sd=new Float32Array(NS),sGeo=new THREE.BufferGeometry(),sArr=new Float32Array(NS*6);
+for(let i=0;i<NS;i++){const a=Math.random()*6.283,r=2.2+Math.pow(Math.random(),.7)*15;
+  sd[i]=1+Math.random()*79;sArr[i*6]=sArr[i*6+3]=Math.cos(a)*r;sArr[i*6+1]=sArr[i*6+4]=Math.sin(a)*r}
+sGeo.setAttribute('position',new THREE.BufferAttribute(sArr,3));
+const sMat=new THREE.LineBasicMaterial({color:0xffe9a8,transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false});
+const streaks=new THREE.LineSegments(sGeo,sMat);streaks.frustumCulled=false;scene.add(streaks);
+/* the portal: same tesseract geometry, blown up until the camera passes through it */
+const portal=new THREE.LineSegments(tGeo,new THREE.LineBasicMaterial({color:0xfff2c0,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthTest:false,depthWrite:false}));
+portal.frustumCulled=false;portal.visible=false;portal.renderOrder=20;scene.add(portal);
+function whoosh(){
+  if(!AC)return;const n=AC.currentTime,L=WARP,sr=AC.sampleRate;
+  const buf=AC.createBuffer(1,sr*L,sr),d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+  const src=AC.createBufferSource();src.buffer=buf;
+  const bp=AC.createBiquadFilter();bp.type='bandpass';bp.Q.value=1.2;bp.frequency.setValueAtTime(180,n);bp.frequency.exponentialRampToValueAtTime(3400,n+L*.78);
+  const g=AC.createGain();g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(.55,n+L*.74);g.gain.linearRampToValueAtTime(0,n+L);
+  src.connect(bp);bp.connect(g);g.connect(AC.destination);src.start(n);
+  const o=AC.createOscillator(),og=AC.createGain();o.type='sine';
+  o.frequency.setValueAtTime(95,n+L*.77);o.frequency.exponentialRampToValueAtTime(28,n+L*.77+1.3);
+  og.gain.setValueAtTime(0,n);og.gain.setValueAtTime(.7,n+L*.77);og.gain.exponentialRampToValueAtTime(.001,n+L*.77+1.5);
+  o.connect(og);og.connect(AC.destination);o.start(n);o.stop(n+L+1.6);
+}
+function gyro(){addEventListener('deviceorientation',e=>{if(e.gamma==null)return;
+  mx=Math.max(-.5,Math.min(.5,e.gamma/60));my=Math.max(-.5,Math.min(.5,(e.beta-55)/80))})}
+function arrive(){
+  entryState='in';warpFlash.style.opacity=0;portal.visible=false;
+  document.documentElement.style.overflow='';
+  document.body.classList.remove('gated');document.body.classList.add('inside');
+  gate.classList.add('gone');
+  if(!RM){gust=1;gustDir=1;chime()}
+}
+function enterDimension(sound){
+  if(entryState!=='gate')return;
+  if(sound)setSound(true);   // inside the click handler, so the browser allows audio
+  if(matchMedia('(pointer:coarse)').matches){
+    const DO=window.DeviceOrientationEvent;
+    if(DO&&typeof DO.requestPermission==='function')DO.requestPermission().then(r=>{if(r==='granted')gyro()}).catch(()=>{});
+    else gyro();
+  }
+  if(navigator.vibrate)try{navigator.vibrate([20,40,60])}catch(e){}
+  entryState='warp';warpStart=performance.now();gate.classList.add('out');
+  if(sound)whoosh();
+}
+document.getElementById('gate-go').onclick=()=>enterDimension(true);
+document.getElementById('gate-mute').onclick=()=>enterDimension(false);
+document.querySelectorAll('.gate-lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&entryState==='warp')arrive()});
+addEventListener('pointerdown',()=>{if(entryState==='warp'&&performance.now()-warpStart>700)arrive()});   // tap to skip
+if(entryState==='gate')document.getElementById('gate-go').focus({preventScroll:true});
+function updateEntry(){
+  if(entryState==='gate'){entryOff=0;return}
+  if(entryState!=='warp'){warpK*=Math.pow(.9,DT*60);entryOff=0;return}
+  const u=Math.min(1,(performance.now()-warpStart)/(WARP*1000));
+  warpK=u<.8?Math.min(1,u*2.4):Math.max(0,(1-u)/.2);
+  entryOff=Math.pow(1-u,3)*70;
+  warpFlash.style.opacity=u<.74?0:u<.8?(u-.74)/.06:Math.max(0,1-(u-.8)/.2);
+  if(u>=1)arrive();
+}
+function updateImmersion(dt){
+  const u=entryState==='warp'?Math.min(1,(performance.now()-warpStart)/(WARP*1000)):1;
+  const boost=Math.max(warpK*1.5,Math.min(1,vel*45));
+  /* tunnel */
+  streaks.position.copy(camera.position);
+  const sp=5+boost*110,len=.4+boost*7;
+  for(let i=0;i<NSA;i++){let d=sd[i]-sp*dt;if(d<1)d+=80;sd[i]=d;sArr[i*6+2]=-d;sArr[i*6+5]=-(d+len)}
+  sGeo.attributes.position.needsUpdate=true;
+  sMat.opacity=.1+.7*Math.min(1,boost);sMat.color.copy(key.color).lerp(white,.45);
+  /* portal tesseract */
+  portal.visible=entryState==='warp';
+  if(portal.visible){
+    portal.position.set(camera.position.x,camera.position.y,camera.position.z-14);
+    portal.scale.setScalar(2.2+Math.pow(Math.min(1,u/.75),3)*60);
+    portal.material.opacity=u<.72?1:Math.max(0,1-(u-.72)/.1);
+  }
+  /* glowing rim pulses with speed */
+  const w=Math.round(Math.min(1,boost)*50)/50;
+  if(w!==rimW){rimW=w;rim.style.boxShadow='inset 0 0 '+(110+w*170)+'px '+(8+w*40)+'px rgba(217,194,122,'+(.13+w*.5)+')'}
+  /* live 4D coordinates */
+  if((frN++&7)===0){
+    const f=n=>(n>=0?'+':'')+n.toFixed(1);
+    tele.textContent='KOORDINAT 4D\nX '+f(camera.position.x)+'  Y '+f(camera.position.y)+'\nZ '+f(camera.position.z)+'  W '+(hhW>.5?clockStr:Math.round(2007+scrollP*19));
+  }
+}
+const clock=new THREE.Clock();let lastT=0,lastYr='',lastPh='',lastKn='',ema=1/60,slow=0,qLevel=0,petalN=N,NSA=NS;
+function setQuality(l){
+  qLevel=l;renderer.setPixelRatio(l===0&&!MOBILE?Math.min(devicePixelRatio,1.75):1);renderer.setSize(innerWidth,innerHeight,false);
+  petalN=Math.round(N*[1,.55,.28][l]);petals.count=petalN;
+  NSA=Math.round(NS*[1,.6,.35][l]);sGeo.setDrawRange(0,NSA*2);
+}
 function frame(){
-  const t=clock.getElapsedTime();
-  scrollP+=(target-scrollP)*.06;
+  const t=clock.getElapsedTime(),raw=t-lastT,dt=Math.min(.05,raw);lastT=t;DT=dt;
+  /* adaptive quality: if the device can't hold ~36fps, shed pixels / particles instead of stuttering */
+  ema+=(Math.min(.2,raw)-ema)*.05;
+  if(t>3&&ema>1/36&&qLevel<2){if(++slow>150){setQuality(qLevel+1);slow=0}}else slow=Math.max(0,slow-1);
+  scrollP+=(target-scrollP)*kk(.06);
+  /* --- 4D: time, speed, atmosphere --- */
+  vel+=(Math.abs(target-scrollP)-vel)*kk(.1);
+  warp=RM?0:Math.min(1,vel*45);
+  gust*=Math.pow(.95,dt*60);
+  updateDay();updateEntry();
+  night=Math.max(Math.min(1,Math.max(0,(scrollP-.72)/.28)),hhW*Math.min(1,Math.max(0,(dayT-.7)/.3)));
+  todAt(scrollP,'bg',scene.background);todAt(scrollP,'key',key.color);todAt(scrollP,'fill',fill.color);todAt(scrollP,'tint',tintC);
+  if(hhW>.002){const w=hhW*hhW*(3-2*hhW);   // inside Hari H the sky follows the wedding clock, not the page
+    todAt(dayT,'bg',_t);scene.background.lerp(_t,w);todAt(dayT,'key',_t);key.color.lerp(_t,w);todAt(dayT,'fill',_t);fill.color.lerp(_t,w);
+    todAt(dayT,'tint',_t);tintC.lerp(_t,w)}
+  heroBg.material.color.copy(tintC);flies.forEach(m=>m.material.color.copy(tintC));   // photos get graded by the hour too
+  scene.fog.color.copy(scene.background);
+  key.intensity=2.2+gust*3.5;
+  dust.material.size=.06+night*.05+warp*.05;
+  const fovT=55+warp*22+warpK*45;
+  if(Math.abs(camera.fov-fovT)>.05){camera.fov=fovT;camera.updateProjectionMatrix()}
+  const yv=String(hhW>.5?clockStr:Math.round(2007+scrollP*19));
+  if(yv!==lastYr){lastYr=yv;yrEl.textContent=yv}
+  const en=document.documentElement.lang==='en',di=dayIdx<0?0:dayIdx;
+  const pv=hhW>.5?(en?DAY[di].te:DAY[di].t):todName(scrollP);
+  if(pv!==lastPh){lastPh=pv;phEl.textContent=pv}
+  const kv=(scrollP*100).toFixed(1);
+  if(kv!==lastKn){lastKn=kv;knob.style.left=kv+'%'}
+  if(pad.length&&soundOn)pad.forEach((o,i)=>o.frequency.setTargetAtTime(PB[i]*(1+scrollP*.45),AC.currentTime,.6));
+  updateTess3(t);drawCompass(dt);
   // camera flies through hoops with scroll
-  camera.position.z=12-scrollP*95;
-  camera.position.x+=((mx*3)-camera.position.x+Math.sin(scrollP*12)*1.5)*.04;
-  camera.position.y+=((-my*2)-camera.position.y)*.04;
-  camera.lookAt(camera.position.x*.3,camera.position.y*.3,camera.position.z-10);
+  camera.position.z=12-scrollP*95+entryOff;
+  camera.position.x+=((mx*3)-camera.position.x+Math.sin(scrollP*12)*1.5)*kk(.04);
+  camera.position.y+=((-my*2)-camera.position.y)*kk(.04);
+  camera.lookAt(camera.position.x*.3+mx*5,camera.position.y*.3-my*3.5,camera.position.z-10);   // look around inside the dimension
+  if(!RM)camera.rotateZ(-mx*.05+Math.max(-.06,Math.min(.06,(target-scrollP)*6))); // banking while time flows
   // rings follow camera at start then fade away
   rings.position.z=camera.position.z-14+Math.max(0,scrollP*60);
-  const ringOpacity=Math.max(0,1-scrollP*5);
+  const ringOpacity=Math.max(0,1-scrollP*5)*(1-Math.min(1,hhW*1.5));
   rings.visible=ringOpacity>0.01;
   rings.rotation.y=t*.5;r1.rotation.x=t*.7;r2.rotation.x=-t*.6;gem.rotation.y=t*2;
   rings.scale.setScalar((innerWidth<800?.6:1)*ringOpacity);
   key.position.set(6+Math.sin(t)*3,6,camera.position.z-2);
   fill.position.z=camera.position.z-2;
   // petals
-  for(let i=0;i<N;i++){
+  const f60=dt*60;
+  for(let i=0;i<petalN;i++){
     const p=pd[i];
-    p.y-=p.vy*.012*p.s;
+    p.y-=p.vy*.012*p.s*(1+warp*7)*f60;
     if(p.y<-30)p.y=30;
+    if(gust>.01){p.x+=gust*gustDir*.35*p.s*f60;if(p.x>28)p.x=-28;else if(p.x<-28)p.x=28}
     const px=p.x+Math.sin(t*p.sw+p.sx)*1.5;
     const pz=p.z+camera.position.z-5;
     dummy.position.set(px,p.y,pz-((p.z+100)%40)*0);
@@ -442,9 +1001,11 @@ function frame(){
   petals.instanceMatrix.needsUpdate=true;
   dust.position.z=camera.position.z;dust.rotation.y=t*.02;
   flies.forEach(m=>{m.position.y=m.userData.y+Math.sin(t*.8+m.userData.ph)*.3});
+  updateProps(t,dt);updateImmersion(dt);
   renderer.render(scene,camera);
   requestAnimationFrame(frame);
 }
+setQuality(MOBILE?1:0);
 frame();
 
 /* ---------- UI: reveal, tilt, counter ---------- */
@@ -499,11 +1060,11 @@ setInterval(()=>{if(document.hidden)return;
   const el=state.gal.el.closest('section');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)rot('gal',1)},4500);
 
 /* ---------- language toggle ---------- */
-const TR={"Tentang Kami": "About Us", "Kelebihan": "Advantages", "Paket": "Packages", "Venue": "Venue", "Testimoni": "Testimonials", "Galeri": "Gallery", "Kontak": "Contact", "Wedding Planner sejak 2007": "Wedding Planner since 2007", "Pelajari Lebih Lanjut": "Learn More", "Partner Terpercaya Kami": "Our Trusted Partners", "Klien Tercinta Kami": "Our Beloved Clients", "Masalah yang sering dihadapi calon pengantin saat mempersiapkan pernikahan :": "Problems couples often face when preparing a wedding:", "Bingung harus mulai dari mana": "Confused about where to start", "Butuh pendampingan dalam proses": "Need guidance throughout the process", "Paket pernikahan yang tidak fleksibel": "Inflexible wedding packages", "Harga paket membingungkan": "Confusing package prices", "Banyak biaya tambahan di akhir": "Many extra costs at the end", "Waktu mepet untuk persiapan": "Tight preparation time", "Tidak ada waktu": "No time", "Takut salah pilih vendor": "Afraid of choosing the wrong vendor", "Tidak memiliki gambaran dana": "No clear idea of the budget", "Konsultasi Gratis": "Free Consultation", "Tidak perlu khawatir": "No need to worry", "PUNYA SOLUSI TERBAIK": "HAS THE BEST SOLUTION", "Tahun Pengalaman": "Years of Experience", "Dipercaya sejak 2007 untuk membantu persiapan pernikahan tradisional, nasional dan internasional.": "Trusted since 2007 to help prepare traditional, national and international weddings.", "Hotel bintang 5 dengan budget lebih hemat": "5-star hotels on a smarter budget", "Mewujudkan acara pernikahan impian dengan pilihan vendor premium, fasilitas dan pelayanan berkualitas namun dengan harga yang pasti lebih terjangkau.": "Making your dream wedding happen with premium vendors, quality facilities and service, at prices that are certainly more affordable.", "Paket lengkap dan fleksibel": "Complete and flexible packages", "Tidak perlu khawatir vendor tidak cocok karena seluruh paket dibuat sesuai dengan keinginan, kebutuhan dan tentunya budget yang dimiliki calon pengantin.": "No need to worry about mismatched vendors, because every package is made to fit the wishes, needs and budget of the couple.", "Kemudahan cara pembayaran": "Easy payment options", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan pilihan calon pengantin.": "Installments and credit card payments are available. Discuss the schedule that suits you best.", "Berdiri sejak 2007 untuk mempersiapkan pernikahan ratusan calon pengantin.": "Established in 2007 to prepare the weddings of hundreds of couples.", "Meminimalisir stress dan membuat persiapan menjadi menyenangkan dan nyaman.": "Minimizing stress and making preparation enjoyable and comfortable.", "Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.": "Providing the best solutions so the couple and their families can stay calm and enjoy every step toward their special day.", "Pilihan Paket": "Choose Your Package", "Cocok untuk calon pengantin yang tidak memiliki banyak waktu untuk mencari vendor satu persatu. Efisien dari sisi waktu dan biaya.": "Perfect for couples without much time to look for vendors one by one. Efficient in time and cost.", "Cocok untuk calon pengantin yang sudah memiliki alokasi budget tertentu dan vendor-vendor yang diinginkan. Maheswara hadir untuk membuat paket sesuai budget dan memberikan alternatif terbaik.": "Perfect for couples who already have a set budget and preferred vendors. Maheswara builds a package to fit your budget and offers the best alternatives.", "Cocok untuk calon pengantin yang memilih untuk merencanakan semua persiapan pernikahan dari awal dan membutuhkan rekomendasi vendor-vendor terpercaya. Sangat efisien dan hemat waktu.": "Perfect for couples who want to plan everything from scratch and need trusted vendor recommendations. Very efficient and time-saving.", "Cocok untuk calon pengantin yang sudah memilih semua vendor dan hanya membutuhkan tim untuk koordinasi pada hari H (syarat dan ketentuan berlaku).": "Perfect for couples who have chosen all vendors and only need a team to coordinate on the big day (terms and conditions apply).", "Hubungi Maheswara Wedding Planner": "Contact Maheswara Wedding Planner", "Untuk informasi detail paket yang lebih lengkap, klik tombol kontak dibawah. Tim kami dengan senang hati akan membantu Anda.": "For more complete package details, click the contact button below. Our team will gladly help you.", "Chat Via WhatsApp": "Chat via WhatsApp", "Pilihan Terbaik Untuk Pernikahan Impian": "The Best Choice for Your Dream Wedding", "Venue Indoor": "Indoor Venue", "Venue Outdoor": "Outdoor Venue", "Love Letters from": "Love Letters from", "Our Brides": "Our Brides", "Bride Testimonials on Bridestory": "Bride Testimonials on Bridestory", "Lihat di Bridestory": "See on Bridestory", "Lihat Galeri Kami": "Visit Our Gallery", "FAQ": "FAQ", "Pertanyaan yang": "Frequently", "Sering Ditanyakan": "Asked Questions", "Paket apa saja yang tersedia di Maheswara?": "What packages does Maheswara offer?", "Tersedia empat pilihan: All in One Package, Customized Package, Full Wedding Planner, dan Wedding Organizer. Semuanya bisa dibicarakan sesuai kebutuhan dan budget Anda.": "There are four options: All in One Package, Customized Package, Full Wedding Planner and Wedding Organizer. All can be tailored to your needs and budget.", "Bisakah saya memakai vendor pilihan sendiri?": "Can I use my own vendors?", "Bisa. Customized Package cocok untuk calon pengantin yang sudah punya vendor dan alokasi budget tertentu. Maheswara membuat paket sesuai budget dan memberikan alternatif terbaik.": "Yes. The Customized Package suits couples who already have vendors and a set budget. Maheswara builds a package to fit your budget and offers the best alternatives.", "Apakah ada biaya tambahan di akhir?": "Are there extra costs at the end?", "Maheswara membantu memberi gambaran dana sejak awal dengan harga paket yang pasti, sehingga Anda tidak dibingungkan oleh biaya tambahan di akhir.": "Maheswara gives you a clear budget picture from the start with fixed package prices, so you are not surprised by extra costs at the end.", "Bagaimana cara pembayarannya?": "How does payment work?", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan tim kami.": "Installments and credit card payments are available. Discuss the schedule that suits you best with our team.", "Jenis pernikahan apa yang bisa ditangani?": "What kinds of weddings can you handle?", "Pernikahan tradisional, nasional dan internasional, di venue indoor maupun outdoor, termasuk hotel bintang 5 dengan budget yang lebih hemat.": "Traditional, national and international weddings, at indoor or outdoor venues, including 5-star hotels on a smarter budget.", "Saya hanya butuh tim di hari H, bisa?": "I only need a team on the big day, is that possible?", "Bisa, lewat paket Wedding Organizer untuk calon pengantin yang sudah memilih semua vendor (syarat dan ketentuan berlaku).": "Yes, through the Wedding Organizer package for couples who have chosen all vendors (terms and conditions apply).", "Terinspirasi": "Be Inspired", "Perayaan": "Latest", "Terbaru": "Celebration", "Dapatkan lebih banyak": "Get more", "inspirasi": "inspiration", "Hubungi": "Contact", "Kami": "Us", "Isi formulir ini dan tim kami akan segera menghubungi Anda.": "Fill out this form and our team will get back to you shortly.", "Nama*": "Name*", "Pilih Cara Dihubungi*": "Preferred Contact Method*", "Jenis Pernikahan": "Wedding Type", "Paket yang Diminati": "Package of Interest", "Tanggal Acara": "Event Date", "Lokasi / Venue": "Location / Venue", "Ceritakan Tentang Pernikahan Anda": "Tell Us About Your Wedding", "Kirim via WhatsApp": "Send via WhatsApp", "Hubungi kami": "Contact us", "Telepon": "Phone", "Dipercaya Sejak 2007": "Trusted Since 2007"};
+const TR={"Tentang Kami": "About Us", "Kelebihan": "Advantages", "Paket": "Packages", "Venue": "Venue", "Testimoni": "Testimonials", "Galeri": "Gallery", "Kontak": "Contact", "Wedding Planner sejak 2007": "Wedding Planner since 2007", "Pelajari Lebih Lanjut": "Learn More", "Partner Terpercaya Kami": "Our Trusted Partners", "Klien Tercinta Kami": "Our Beloved Clients", "Masalah yang sering dihadapi calon pengantin saat mempersiapkan pernikahan :": "Problems couples often face when preparing a wedding:", "Bingung harus mulai dari mana": "Confused about where to start", "Butuh pendampingan dalam proses": "Need guidance throughout the process", "Paket pernikahan yang tidak fleksibel": "Inflexible wedding packages", "Harga paket membingungkan": "Confusing package prices", "Banyak biaya tambahan di akhir": "Many extra costs at the end", "Waktu mepet untuk persiapan": "Tight preparation time", "Tidak ada waktu": "No time", "Takut salah pilih vendor": "Afraid of choosing the wrong vendor", "Tidak memiliki gambaran dana": "No clear idea of the budget", "Konsultasi Gratis": "Free Consultation", "Tidak perlu khawatir": "No need to worry", "PUNYA SOLUSI TERBAIK": "HAS THE BEST SOLUTION", "Tahun Pengalaman": "Years of Experience", "Dipercaya sejak 2007 untuk membantu persiapan pernikahan tradisional, nasional dan internasional.": "Trusted since 2007 to help prepare traditional, national and international weddings.", "Hotel bintang 5 dengan budget lebih hemat": "5-star hotels on a smarter budget", "Mewujudkan acara pernikahan impian dengan pilihan vendor premium, fasilitas dan pelayanan berkualitas namun dengan harga yang pasti lebih terjangkau.": "Making your dream wedding happen with premium vendors, quality facilities and service, at prices that are certainly more affordable.", "Paket lengkap dan fleksibel": "Complete and flexible packages", "Tidak perlu khawatir vendor tidak cocok karena seluruh paket dibuat sesuai dengan keinginan, kebutuhan dan tentunya budget yang dimiliki calon pengantin.": "No need to worry about mismatched vendors, because every package is made to fit the wishes, needs and budget of the couple.", "Kemudahan cara pembayaran": "Easy payment options", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan pilihan calon pengantin.": "Installments and credit card payments are available. Discuss the schedule that suits you best.", "Berdiri sejak 2007 untuk mempersiapkan pernikahan ratusan calon pengantin.": "Established in 2007 to prepare the weddings of hundreds of couples.", "Meminimalisir stress dan membuat persiapan menjadi menyenangkan dan nyaman.": "Minimizing stress and making preparation enjoyable and comfortable.", "Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.": "Providing the best solutions so the couple and their families can stay calm and enjoy every step toward their special day.", "Pilihan Paket": "Choose Your Package", "Cocok untuk calon pengantin yang tidak memiliki banyak waktu untuk mencari vendor satu persatu. Efisien dari sisi waktu dan biaya.": "Perfect for couples without much time to look for vendors one by one. Efficient in time and cost.", "Cocok untuk calon pengantin yang sudah memiliki alokasi budget tertentu dan vendor-vendor yang diinginkan. Maheswara hadir untuk membuat paket sesuai budget dan memberikan alternatif terbaik.": "Perfect for couples who already have a set budget and preferred vendors. Maheswara builds a package to fit your budget and offers the best alternatives.", "Cocok untuk calon pengantin yang memilih untuk merencanakan semua persiapan pernikahan dari awal dan membutuhkan rekomendasi vendor-vendor terpercaya. Sangat efisien dan hemat waktu.": "Perfect for couples who want to plan everything from scratch and need trusted vendor recommendations. Very efficient and time-saving.", "Cocok untuk calon pengantin yang sudah memilih semua vendor dan hanya membutuhkan tim untuk koordinasi pada hari H (syarat dan ketentuan berlaku).": "Perfect for couples who have chosen all vendors and only need a team to coordinate on the big day (terms and conditions apply).", "Hubungi Maheswara Wedding Planner": "Contact Maheswara Wedding Planner", "Untuk informasi detail paket yang lebih lengkap, klik tombol kontak dibawah. Tim kami dengan senang hati akan membantu Anda.": "For more complete package details, click the contact button below. Our team will gladly help you.", "Chat Via WhatsApp": "Chat via WhatsApp", "Pilihan Terbaik Untuk Pernikahan Impian": "The Best Choice for Your Dream Wedding", "Venue Indoor": "Indoor Venue", "Venue Outdoor": "Outdoor Venue", "Love Letters from": "Love Letters from", "Our Brides": "Our Brides", "Bride Testimonials on Bridestory": "Bride Testimonials on Bridestory", "Lihat di Bridestory": "See on Bridestory", "Lihat Galeri Kami": "Visit Our Gallery", "FAQ": "FAQ", "Pertanyaan yang": "Frequently", "Sering Ditanyakan": "Asked Questions", "Paket apa saja yang tersedia di Maheswara?": "What packages does Maheswara offer?", "Tersedia empat pilihan: All in One Package, Customized Package, Full Wedding Planner, dan Wedding Organizer. Semuanya bisa dibicarakan sesuai kebutuhan dan budget Anda.": "There are four options: All in One Package, Customized Package, Full Wedding Planner and Wedding Organizer. All can be tailored to your needs and budget.", "Bisakah saya memakai vendor pilihan sendiri?": "Can I use my own vendors?", "Bisa. Customized Package cocok untuk calon pengantin yang sudah punya vendor dan alokasi budget tertentu. Maheswara membuat paket sesuai budget dan memberikan alternatif terbaik.": "Yes. The Customized Package suits couples who already have vendors and a set budget. Maheswara builds a package to fit your budget and offers the best alternatives.", "Apakah ada biaya tambahan di akhir?": "Are there extra costs at the end?", "Maheswara membantu memberi gambaran dana sejak awal dengan harga paket yang pasti, sehingga Anda tidak dibingungkan oleh biaya tambahan di akhir.": "Maheswara gives you a clear budget picture from the start with fixed package prices, so you are not surprised by extra costs at the end.", "Bagaimana cara pembayarannya?": "How does payment work?", "Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan tim kami.": "Installments and credit card payments are available. Discuss the schedule that suits you best with our team.", "Jenis pernikahan apa yang bisa ditangani?": "What kinds of weddings can you handle?", "Pernikahan tradisional, nasional dan internasional, di venue indoor maupun outdoor, termasuk hotel bintang 5 dengan budget yang lebih hemat.": "Traditional, national and international weddings, at indoor or outdoor venues, including 5-star hotels on a smarter budget.", "Saya hanya butuh tim di hari H, bisa?": "I only need a team on the big day, is that possible?", "Bisa, lewat paket Wedding Organizer untuk calon pengantin yang sudah memilih semua vendor (syarat dan ketentuan berlaku).": "Yes, through the Wedding Organizer package for couples who have chosen all vendors (terms and conditions apply).", "Terinspirasi": "Be Inspired", "Perayaan": "Latest", "Terbaru": "Celebration", "Dapatkan lebih banyak": "Get more", "inspirasi": "inspiration", "Hubungi": "Contact", "Kami": "Us", "Isi formulir ini dan tim kami akan segera menghubungi Anda.": "Fill out this form and our team will get back to you shortly.", "Nama*": "Name*", "Pilih Cara Dihubungi*": "Preferred Contact Method*", "Jenis Pernikahan": "Wedding Type", "Paket yang Diminati": "Package of Interest", "Tanggal Acara": "Event Date", "Lokasi / Venue": "Location / Venue", "Ceritakan Tentang Pernikahan Anda": "Tell Us About Your Wedding", "Kirim via WhatsApp": "Send via WhatsApp", "Hubungi kami": "Contact us", "Telepon": "Phone", "Dipercaya Sejak 2007": "Trusted Since 2007", "Hari H": "The Big Day", "Satu Hari,": "One Day,", "Empat Babak": "Four Acts", "Persiapan": "Preparation", "Akad": "Ceremony", "Resepsi": "Reception", "Pesta": "Celebration", "Rencanakan Hari Anda": "Plan Your Day", "Masuk ke": "Enter the", "Dimensi Keempat": "Fourth Dimension", "Di sini waktu menjadi ruang. Berjalanlah melewati satu hari pernikahan, dari fajar sampai pesta malam.": "Here, time becomes space. Walk through one wedding day, from dawn to the night party.", "Masuk ke Dimensi": "Enter the Dimension", "Tanpa suara": "Without sound"};
 const PH={nama:'Name',lok:'',cerita:''};
 const orig=new Map();
 function setLang(l){
-  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&!/SCRIPT|STYLE/.test(n.parentElement.tagName)&&n.nodeValue.trim()?1:2});
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&!/SCRIPT|STYLE/.test(n.parentElement.tagName)&&!n.parentElement.closest('#chrono,#tele,#hh-t,#hh-p,#hh-clock')&&n.nodeValue.trim()?1:2});
   let n;while(n=w.nextNode()){
     const k=n.nodeValue.replace(/\s+/g,' ').trim();
     if(!orig.has(n))orig.set(n,n.nodeValue);
@@ -511,7 +1072,7 @@ function setLang(l){
     else if(l==='id'){n.nodeValue=orig.get(n)}
   }
   document.documentElement.lang=l;
-  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  document.querySelectorAll('.lang button,.gate-lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
