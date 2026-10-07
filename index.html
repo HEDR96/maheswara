@@ -88,6 +88,30 @@ nav .logo{background:#fffff9ee;padding:7px 14px;border-radius:12px}
 .testi img{transform:none}
 .bs{height:64px;background:#fffff9;border-radius:12px;padding:4px 14px;margin:0 auto 10px;display:block}
 footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;padding:5px 10px}
+
+.faq{width:100%;max-width:820px;text-align:left;display:grid;gap:12px}
+.faq details{background:linear-gradient(145deg,#2a241866,#41392a99);border:1px solid #d9c27a44;border-radius:16px;padding:18px 22px;backdrop-filter:blur(14px);transition:.3s}
+.faq details[open]{border-color:var(--gold);box-shadow:0 20px 40px #0007}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";color:var(--gold);font-size:1.4rem;line-height:1;transition:.3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin-top:12px;line-height:1.7;opacity:.85;font-size:.95rem}
+.social{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.social .btn{margin-top:0}
+.form{width:100%;max-width:820px;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.form .full{grid-column:1/-1}
+.form input,.form select,.form textarea{font:500 .95rem Montserrat;padding:12px 14px;border-radius:10px;border:1px solid #d9c27a55;background:#1b170fcc;color:var(--cream);letter-spacing:0;text-transform:none}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--olive)}
+@media(max-width:640px){.form{grid-template-columns:1fr}}
+footer{text-align:left;padding:60px 6vw 24px;opacity:1}
+footer .ftr{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px;max-width:1100px;margin:0 auto}
+footer .ftr a{display:block;color:var(--cream);text-decoration:none;opacity:.8;margin:6px 0;font-size:.85rem}
+footer .ftr a:hover{color:var(--gold)}
+footer h4{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;margin-bottom:10px}
+footer .ftr p{opacity:.7;font-size:.85rem;margin-top:8px}
+footer .cp{text-align:center;margin-top:40px;opacity:.6;font-size:.75rem}
+@media(max-width:640px){footer .ftr{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -100,6 +124,7 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
     <li><a href="#kelebihan">Kelebihan</a></li>
     <li><a href="#paket">Paket</a></li>
     <li><a href="#venue">Venue</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
     <li><a href="#galeri">Galeri</a></li>
     <li><a href="#kontak">Kontak</a></li>
   </ul>
@@ -109,8 +134,27 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
 <section id="hero">
   <div class="eyebrow">Wedding Planner sejak 2007</div>
   <h1>Maheswara<br>Wedding Planner<span>#Nikahtanparibet</span></h1>
-  <a class="btn" href="#masalah">Pelajari Lebih Lanjut</a>
+  <a class="btn" href="#tentang">Pelajari Lebih Lanjut</a>
   <div class="scroll-hint">SCROLL ↓</div>
+</section>
+
+<section id="tentang" class="about">
+  <div class="eyebrow reveal">Tentang Kami</div>
+  <h2 class="title reveal">Maheswara <em>Wedding Planner</em></h2>
+  <div class="panel light reveal" style="max-width:860px;--bgimg:url(img/florist-02.jpg)">
+    <p>Berdiri sejak 2007 untuk mempersiapkan pernikahan ratusan calon pengantin.</p>
+    <p>Meminimalisir stress dan membuat persiapan menjadi menyenangkan dan nyaman.</p>
+    <p>Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.</p>
+  </div>
+  <a class="btn reveal" href="#kelebihan">Pelajari Lebih Lanjut</a>
+</section>
+
+<section id="partner" style="min-height:auto;padding:60px 6vw">
+  <div class="eyebrow reveal">Dipercaya Sejak 2007</div>
+  <div class="reveal" style="display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap">
+    <img class="bs" style="margin:0" src="img/maheswara-wedding-planner-1-1.png" alt="Bridestory">
+    <p style="max-width:460px;line-height:1.7;opacity:.85">Ratusan calon pengantin telah mempercayakan pernikahan tradisional, nasional dan internasional mereka kepada Maheswara.</p>
+  </div>
 </section>
 
 <section id="masalah">
@@ -142,16 +186,6 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
   </div>
 </section>
 
-<section id="tentang" class="about">
-  <div class="eyebrow reveal">Tentang Kami</div>
-  <h2 class="title reveal">Maheswara <em>Wedding Planner</em></h2>
-  <div class="panel light reveal" style="max-width:860px;--bgimg:url(img/florist-02.jpg)">
-    <p>Berdiri sejak 2007 untuk mempersiapkan pernikahan ratusan calon pengantin.</p>
-    <p>Meminimalisir stress dan membuat persiapan menjadi menyenangkan dan nyaman.</p>
-    <p>Memberikan solusi terbaik sehingga kedua pasangan pengantin beserta keluarga dapat tenang dan menikmati setiap langkah menuju hari spesial mereka.</p>
-  </div>
-</section>
-
 <section id="paket">
   <div class="eyebrow reveal">Paket</div>
   <h2 class="title reveal">Pilihan Paket</h2>
@@ -178,13 +212,9 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
   </div>
 </section>
 
-<section id="galeri">
-  <div class="eyebrow reveal">Galeri</div>
-  <h2 class="title reveal">Love Stories <em>Captured</em></h2>
-  <div class="stage"><div class="ring" id="ring-gal"></div></div>
-  <div class="ctrl"><button data-r="gal" data-d="-1">‹</button><button data-r="gal" data-d="1">›</button></div>
-
-  <h2 class="title reveal" style="margin-top:90px">Love Letters from <em>Our Brides</em></h2>
+<section id="testimoni">
+  <div class="eyebrow reveal">Testimoni</div>
+  <h2 class="title reveal">Love Letters from <em>Our Brides</em></h2>
   <p class="reveal" style="margin:-20px 0 30px;opacity:.8">Bride Testimonials on Bridestory</p>
   <img class="bs reveal" src="img/maheswara-wedding-planner-1-1.png" alt="Bridestory">
   <div class="grid testi">
@@ -196,10 +226,55 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
   <a class="btn reveal" href="https://www.bridestory.com/id/maheswara?page=10&tab=reviews" target="_blank" rel="noopener">Lihat di Bridestory</a>
 </section>
 
+<section id="galeri">
+  <div class="eyebrow reveal">Galeri</div>
+  <h2 class="title reveal">Love Stories <em>Captured</em></h2>
+  <div class="stage"><div class="ring" id="ring-gal"></div></div>
+  <div class="ctrl"><button data-r="gal" data-d="-1">‹</button><button data-r="gal" data-d="1">›</button></div>
+
+  
+  <a class="btn reveal" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener">Lihat Galeri Kami</a>
+</section>
+
+<section id="faq">
+  <div class="eyebrow reveal">FAQ</div>
+  <h2 class="title reveal">Pertanyaan yang <em>Sering Ditanyakan</em></h2>
+  <div class="faq reveal">
+    <details open><summary>Paket apa saja yang tersedia di Maheswara?</summary><p>Tersedia empat pilihan: All in One Package, Customized Package, Full Wedding Planner, dan Wedding Organizer. Semuanya bisa dibicarakan sesuai kebutuhan dan budget Anda.</p></details>
+    <details><summary>Bisakah saya memakai vendor pilihan sendiri?</summary><p>Bisa. Customized Package cocok untuk calon pengantin yang sudah punya vendor dan alokasi budget tertentu. Maheswara membuat paket sesuai budget dan memberikan alternatif terbaik.</p></details>
+    <details><summary>Apakah ada biaya tambahan di akhir?</summary><p>Maheswara membantu memberi gambaran dana sejak awal dengan harga paket yang pasti, sehingga Anda tidak dibingungkan oleh biaya tambahan di akhir.</p></details>
+    <details><summary>Bagaimana cara pembayarannya?</summary><p>Tersedia opsi cicilan dan pembayaran dengan kartu kredit. Diskusikan termin yang paling sesuai dengan tim kami.</p></details>
+    <details><summary>Jenis pernikahan apa yang bisa ditangani?</summary><p>Pernikahan tradisional, nasional dan internasional, di venue indoor maupun outdoor, termasuk hotel bintang 5 dengan budget yang lebih hemat.</p></details>
+    <details><summary>Saya hanya butuh tim di hari H, bisa?</summary><p>Bisa, lewat paket Wedding Organizer untuk calon pengantin yang sudah memilih semua vendor (syarat dan ketentuan berlaku).</p></details>
+  </div>
+</section>
+
+<section id="ikuti" style="min-height:auto">
+  <div class="eyebrow reveal">Follow Us</div>
+  <h2 class="title reveal" style="margin-bottom:20px">Dapatkan lebih banyak <em>inspirasi</em></h2>
+  <p class="reveal" style="margin-bottom:26px;opacity:.85">@maheswara_wedding</p>
+  <div class="social reveal">
+    <a class="btn" href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn" href="https://www.tiktok.com/@maheswaraweddingplanner" target="_blank" rel="noopener">TikTok</a>
+    <a class="btn" href="https://www.bridestory.com/id/maheswara" target="_blank" rel="noopener">Bridestory</a>
+  </div>
+</section>
+
 <section id="kontak">
   <div class="eyebrow reveal">Kontak</div>
   <h2 class="title reveal">Hubungi <em>Kami</em></h2>
-  <div class="panel tilt reveal" style="max-width:820px;width:100%">
+  <p class="reveal" style="margin:-24px 0 30px;opacity:.85">Isi formulir ini dan tim kami akan segera menghubungi Anda.</p>
+  <form class="panel reveal form" id="f" autocomplete="off">
+    <label>Nama*<input name="nama" required></label>
+    <label>Pilih Cara Dihubungi*<select name="via" required><option value="">Pilih salah satu</option><option>WhatsApp</option><option>Email</option><option>Telepon</option></select></label>
+    <label>Jenis Pernikahan<select name="jenis"><option>Tradisional</option><option>Nasional</option><option>Internasional</option></select></label>
+    <label>Pilihan Paket<select name="paket"><option>All in One Package</option><option>Customized Package</option><option>Full Wedding Planner</option><option>Wedding Organizer</option><option>Belum tahu</option></select></label>
+    <label>Tanggal Acara<input type="date" name="tgl"></label>
+    <label>Lokasi / Venue<input name="lok"></label>
+    <label class="full">Ceritakan Tentang Pernikahan Anda<textarea name="cerita" rows="4"></textarea></label>
+    <button class="btn wa full" type="submit" style="margin-top:6px">Kirim via WhatsApp</button>
+  </form>
+  <div class="panel tilt reveal" style="max-width:820px;width:100%;margin-top:40px">
     <div class="cta-row">
       <div><small>Email</small><a href="mailto:maheswara@live.com">maheswara@live.com</a></div>
       <div><small>WhatsApp</small><a href="https://wa.me/6281110017158" target="_blank" rel="noopener">+62 811-1001-7158</a></div>
@@ -209,7 +284,14 @@ footer img{height:46px;margin-bottom:10px;background:#fffff9;border-radius:10px;
   </div>
 </section>
 </main>
-<footer><img src="img/Logo-1.png" alt="Maheswara"><br>Copyright © 2026 Maheswara Wedding Planner. All right reserved.</footer>
+<footer>
+  <div class="ftr">
+    <div><img src="img/Logo-1.png" alt="Maheswara"><p>Wedding Planner<br>#Nikahtanparibet</p></div>
+    <div><h4>Explore</h4><a href="#tentang">Tentang Kami</a><a href="#kelebihan">Kelebihan</a><a href="#paket">Paket</a><a href="#venue">Venue</a><a href="#testimoni">Testimoni</a><a href="#galeri">Galeri</a><a href="#kontak">Kontak</a></div>
+    <div><h4>Hubungi</h4><a href="mailto:maheswara@live.com">maheswara@live.com</a><a href="https://wa.me/6281110017158" target="_blank" rel="noopener">+62 811-1001-7158</a><a href="https://www.instagram.com/maheswara_wedding/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@maheswaraweddingplanner" target="_blank" rel="noopener">TikTok</a></div>
+  </div>
+  <p class="cp">Copyright © 2026 Maheswara Wedding Planner. All right reserved.</p>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -389,6 +471,11 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 });
 setInterval(()=>{if(document.hidden)return;
   const el=state.gal.el.closest('section');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)rot('gal',1)},4500);
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+  const t='Halo Maheswara Wedding Planner, saya ingin berkonsultasi.\n\nNama: '+d.nama+'\nDihubungi via: '+d.via+'\nJenis pernikahan: '+d.jenis+'\nPaket: '+d.paket+'\nTanggal acara: '+(d.tgl||'-')+'\nLokasi: '+(d.lok||'-')+'\nCerita: '+(d.cerita||'-');
+  window.open('https://wa.me/6281110017158?text='+encodeURIComponent(t),'_blank');
+});
 </script>
 </body>
 </html>
